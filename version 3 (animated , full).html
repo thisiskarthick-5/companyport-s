@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Karthick - Web3 Blockchain Solutions</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+primary: '#8B2635',
+secondary: '#D4A574'
+},
+borderRadius: {
+'none': '0px',
+'sm': '4px',
+DEFAULT: '8px',
+'md': '12px',
+'lg': '16px',
+'xl': '20px',
+'2xl': '24px',
+'3xl': '32px',
+'full': '9999px',
+'button': '8px'
+}
+}
+}
+}
+</script>
+<style>
+:where([class^="ri-"])::before {
+content: "\f3c2";
+}
+.magic-cursor {
+width: 40px;
+height: 40px;
+border: 2px solid rgba(139, 38, 53, 0.3);
+border-radius: 50%;
+position: fixed;
+pointer-events: none;
+z-index: 9999;
+transition: all 0.3s ease;
+mix-blend-mode: difference;
+}
+.magic-cursor-dot {
+width: 8px;
+height: 8px;
+background: #8B2635;
+border-radius: 50%;
+position: fixed;
+pointer-events: none;
+z-index: 9999;
+transition: all 0.2s ease;
+}
+@keyframes cursorAnim {
+0% { transform: scale(1); }
+50% { transform: scale(1.2); }
+100% { transform: scale(1); }
+}
+.magic-cursor.active {
+animation: cursorAnim 0.5s infinite;
+background: rgba(139, 38, 53, 0.1);
+}
+[data-aos] {
+opacity: 0;
+transform: translateY(20px);
+transition-property: transform, opacity;
+}
+[data-aos].aos-animate {
+opacity: 1;
+transform: translateY(0);
+}
+.hover-scale {
+transition: transform 0.3s ease;
+}
+.hover-scale:hover {
+transform: scale(1.05);
+}
+.fade-up {
+opacity: 0;
+transform: translateY(20px);
+transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.fade-up.visible {
+opacity: 1;
+transform: translateY(0);
+}
+@keyframes float {
+0% { transform: translateY(0px); }
+50% { transform: translateY(-10px); }
+100% { transform: translateY(0px); }
+}
+.float-animation {
+animation: float 3s ease-in-out infinite;
+}
+.hero-bg {
+background-image: url('https://readdy.ai/api/search-image?query=modern%20minimalist%20abstract%20geometric%20background%20with%20warm%20beige%20and%20white%20tones%2C%20subtle%20geometric%20patterns%2C%20clean%20professional%20design%2C%20soft%20lighting%2C%20web3%20technology%20aesthetic%2C%20contemporary%20digital%20art%20style%2C%20high%20contrast%20areas%20for%20text%20overlay&width=1920&height=1080&seq=hero-bg-001&orientation=landscape');
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+}
+</style>
+</head>
+<body class="bg-white">
+<header class="w-full bg-white/95 backdrop-blur-sm border-b border-gray-100 sticky top-0 z-50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-16">
+<div class="flex items-center space-x-3">
+<div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+<span class="text-white font-bold text-lg">K</span>
+</div>
+<span class="text-2xl font-bold text-primary">Karthick</span>
+</div>
+<nav class="hidden md:flex items-center space-x-8">
+<a href="#about" class="text-gray-700 hover:text-primary transition-colors duration-200">About</a>
+<a href="#services" class="text-gray-700 hover:text-primary transition-colors duration-200">Our Services</a>
+<a href="#team" class="text-gray-700 hover:text-primary transition-colors duration-200">Our Team</a>
+</nav>
+<div class="flex items-center space-x-4">
+<div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
+<i class="ri-arrow-right-up-line text-white text-sm"></i>
+</div>
+<button class="bg-primary text-white px-6 py-2 !rounded-button hover:bg-primary/90 transition-colors duration-200 whitespace-nowrap">
+Contact us
+</button>
+</div>
+<button class="md:hidden w-8 h-8 flex items-center justify-center" id="mobile-menu-btn">
+<i class="ri-menu-line text-gray-700 text-xl"></i>
+</button>
+</div>
+</div>
+<div class="md:hidden bg-white border-t border-gray-100 hidden" id="mobile-menu">
+<div class="px-4 py-4 space-y-3">
+<a href="#about" class="block text-gray-700 hover:text-primary transition-colors duration-200">About</a>
+<a href="#services" class="block text-gray-700 hover:text-primary transition-colors duration-200">Our Services</a>
+<a href="#team" class="block text-gray-700 hover:text-primary transition-colors duration-200">Our Team</a>
+<button class="w-full bg-primary text-white px-6 py-2 !rounded-button hover:bg-primary/90 transition-colors duration-200 whitespace-nowrap">
+Contact us
+</button>
+</div>
+</div>
+</header>
+<main>
+<section class="hero-bg min-h-screen flex items-center relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-r from-white/95 via-white/80 to-transparent"></div>
+<div class="absolute top-20 right-20 w-16 h-16 border-2 border-primary/30 rounded-full flex items-center justify-center">
+<div class="w-6 h-6 bg-primary rounded-full"></div>
+</div>
+<div class="absolute top-1/3 right-1/4 w-20 h-20 bg-secondary/20 rounded-lg rotate-45 flex items-center justify-center">
+<div class="w-8 h-8 bg-secondary rounded-sm -rotate-45"></div>
+</div>
+<div class="absolute bottom-1/3 right-32 w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center">
+<i class="ri-arrow-down-line text-primary text-xl"></i>
+</div>
+<div class="absolute top-1/2 left-20 w-12 h-12 border-2 border-secondary/40 rounded-full flex items-center justify-center">
+<div class="w-4 h-4 bg-secondary/60 rounded-full"></div>
+</div>
+<div class="absolute bottom-40 left-1/4 w-16 h-16 bg-primary/5 rounded-lg rotate-12 flex items-center justify-center">
+<div class="w-6 h-6 bg-primary/20 rounded-full"></div>
+</div>
+<div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+<div class="max-w-4xl">
+<h1 class="text-6xl sm:text-7xl lg:text-8xl font-black text-primary leading-none mb-8">
+BRIDGING VISION TO<br>
+<span class="text-primary">REALITY IN THE</span><br>
+<span class="text-secondary">WEB3</span><br>
+<span class="text-secondary">REVOLUTION</span>
+</h1>
+<div class="bg-secondary/90 text-white px-8 py-6 !rounded-button max-w-md">
+<p class="text-lg font-medium">
+A web3-native Solutions specializing<br>
+in blockchain solutions.
+</p>
+</div>
+</div>
+</div>
+</section>
+<section id="services" class="py-20 bg-gray-50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-16" data-aos="fade-up">
+<h2 class="text-4xl font-bold text-gray-900 mb-4">Our Services</h2>
+<p class="text-xl text-gray-600 max-w-3xl mx-auto">
+Empowering businesses with comprehensive blockchain solutions and Web3 technologies to drive innovation and growth in the digital era.
+</p>
+</div>
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="bg-white p-8 !rounded-button shadow-lg hover:shadow-xl transition-all duration-300 group" data-aos="fade-up" data-aos-delay="100">
+<div class="w-16 h-16 bg-primary/10 !rounded-button flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors duration-300">
+<i class="ri-code-box-line text-primary text-2xl"></i>
+</div>
+<h3 class="text-xl font-bold text-gray-900 mb-4">Smart Contract Development</h3>
+<p class="text-gray-600 mb-6">Secure and efficient smart contracts for automated business processes and decentralized applications.</p>
+<ul class="space-y-3">
+<li class="flex items-center text-gray-600">
+<i class="ri-checkbox-circle-line text-primary mr-2"></i>
+<span>Solidity Development</span>
+</li>
+<li class="flex items-center text-gray-600">
+<i class="ri-checkbox-circle-line text-primary mr-2"></i>
+<span>Contract Auditing</span>
+</li>
+<li class="flex items-center text-gray-600">
+<i class="ri-checkbox-circle-line text-primary mr-2"></i>
+<span>Gas Optimization</span>
+</li>
+</ul>
+</div>
+<div class="bg-white p-8 !rounded-button shadow-lg hover:shadow-xl transition-all duration-300 group" data-aos="fade-up" data-aos-delay="200">
+<div class="w-16 h-16 bg-primary/10 !rounded-button flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors duration-300">
+<i class="ri-exchange-funds-line text-primary text-2xl"></i>
+</div>
+<h3 class="text-xl font-bold text-gray-900 mb-4">DeFi Platform Development</h3>
+<p class="text-gray-600 mb-6">Custom DeFi solutions for lending, borrowing, and yield farming with robust security measures.</p>
+<ul class="space-y-3">
+<li class="flex items-center text-gray-600">
+<i class="ri-checkbox-circle-line text-primary mr-2"></i>
+<span>Liquidity Pools</span>
+</li>
+<li class="flex items-center text-gray-600">
+<i class="ri-checkbox-circle-line text-primary mr-2"></i>
+<span>Yield Optimization</span>
+</li>
+<li class="flex items-center text-gray-600">
+<i class="ri-checkbox-circle-line text-primary mr-2"></i>
+<span>Token Economics</span>
+</li>
+</ul>
+</div>
+<div class="bg-white p-8 !rounded-button shadow-lg hover:shadow-xl transition-all duration-300 group" data-aos="fade-up" data-aos-delay="300">
+<div class="w-16 h-16 bg-primary/10 !rounded-button flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors duration-300">
+<i class="ri-nft-line text-primary text-2xl"></i>
+</div>
+<h3 class="text-xl font-bold text-gray-900 mb-4">NFT Marketplace Solutions</h3>
+<p class="text-gray-600 mb-6">End-to-end NFT marketplace development with minting, trading, and auction capabilities.</p>
+<ul class="space-y-3">
+<li class="flex items-center text-gray-600">
+<i class="ri-checkbox-circle-line text-primary mr-2"></i>
+<span>Marketplace Setup</span>
+</li>
+<li class="flex items-center text-gray-600">
+<i class="ri-checkbox-circle-line text-primary mr-2"></i>
+<span>Minting Platform</span>
+</li>
+<li class="flex items-center text-gray-600">
+<i class="ri-checkbox-circle-line text-primary mr-2"></i>
+<span>Auction System</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="grid md:grid-cols-3 gap-8">
+<div class="bg-white p-8 !rounded-button shadow-sm hover:shadow-md transition-all duration-300 hover-scale" data-aos="fade-up" data-aos-delay="100">
+<div class="w-16 h-16 bg-primary/10 !rounded-button flex items-center justify-center mb-6">
+<i class="ri-links-line text-primary text-2xl"></i>
+</div>
+<h3 class="text-xl font-bold text-gray-900 mb-4">Blockchain Development</h3>
+<p class="text-gray-600">
+Custom blockchain solutions, smart contracts, and decentralized applications built with security and scalability in mind.
+</p>
+</div>
+<div class="bg-white p-8 !rounded-button shadow-sm hover:shadow-md transition-all duration-300 hover-scale" data-aos="fade-up" data-aos-delay="200">
+<div class="w-16 h-16 bg-secondary/10 !rounded-button flex items-center justify-center mb-6 float-animation">
+<i class="ri-coin-line text-secondary text-2xl"></i>
+</div>
+<h3 class="text-xl font-bold text-gray-900 mb-4">DeFi Solutions</h3>
+<p class="text-gray-600">
+Decentralized finance protocols, yield farming platforms, and innovative financial instruments for the Web3 economy.
+</p>
+</div>
+<div class="bg-white p-8 !rounded-button shadow-sm hover:shadow-md transition-all duration-300 hover-scale" data-aos="fade-up" data-aos-delay="300">
+<div class="w-16 h-16 bg-primary/10 !rounded-button flex items-center justify-center mb-6 float-animation">
+<i class="ri-nft-line text-primary text-2xl"></i>
+</div>
+<h3 class="text-xl font-bold text-gray-900 mb-4">NFT Platforms</h3>
+<p class="text-gray-600">
+Complete NFT marketplace solutions, minting platforms, and digital asset management systems.
+</p>
+</div>
+</div>
+</div>
+</section>
+<section id="about" class="py-20 bg-gray-50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-bold text-gray-900 mb-4">About Us</h2>
+<p class="text-xl text-gray-600 max-w-3xl mx-auto">
+Pioneering the future of blockchain technology with innovative solutions and expert guidance.
+</p>
+</div>
+<div class="grid lg:grid-cols-2 gap-16 items-center">
+<div class="relative" data-aos="fade-right">
+<img src="https://readdy.ai/api/search-image?query=modern%20office%20environment%20with%20team%20working%20on%20computers%2C%20professional%20workspace%20with%20subtle%20tech%20elements%2C%20warm%20lighting%2C%20contemporary%20interior%20design%2C%20clean%20and%20minimalist%20aesthetic&width=600&height=400&seq=about-img-002&orientation=landscape"
+alt="Our Office"
+class="w-full h-[500px] object-cover object-top !rounded-button shadow-lg">
+<div class="absolute -bottom-6 -right-6 w-32 h-32 bg-primary !rounded-button flex items-center justify-center">
+<div class="text-white text-center">
+<div class="text-3xl font-bold">10+</div>
+<div class="text-sm">Years Experience</div>
+</div>
+</div>
+</div>
+<div class="space-y-6">
+<h3 class="text-2xl font-bold text-gray-900">Our Journey</h3>
+<p class="text-gray-600">
+Since our establishment in 2015, we've been at the forefront of blockchain innovation, helping businesses transform their operations through cutting-edge Web3 solutions.
+</p>
+<div class="grid grid-cols-2 gap-6">
+<div class="bg-white p-6 !rounded-button shadow-sm">
+<div class="text-3xl font-bold text-primary mb-2">250+</div>
+<div class="text-gray-600">Projects Completed</div>
+</div>
+<div class="bg-white p-6 !rounded-button shadow-sm">
+<div class="text-3xl font-bold text-primary mb-2">50+</div>
+<div class="text-gray-600">Global Clients</div>
+</div>
+<div class="bg-white p-6 !rounded-button shadow-sm">
+<div class="text-3xl font-bold text-primary mb-2">98%</div>
+<div class="text-gray-600">Client Satisfaction</div>
+</div>
+<div class="bg-white p-6 !rounded-button shadow-sm">
+<div class="text-3xl font-bold text-primary mb-2">24/7</div>
+<div class="text-gray-600">Support Available</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="team" class="py-20 bg-white">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-bold text-gray-900 mb-4">Meet Our Team</h2>
+<p class="text-xl text-gray-600 max-w-3xl mx-auto">
+Our diverse team of experts brings together years of experience in blockchain technology, development, and business strategy.
+</p>
+</div>
+<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="bg-gray-50 p-6 !rounded-button text-center group hover:bg-primary transition-all duration-300 hover-scale" data-aos="fade-up" data-aos-delay="100">
+<div class="w-32 h-32 mx-auto mb-4 overflow-hidden !rounded-button">
+<img src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20a%20male%20tech%20executive%20in%20his%2040s%2C%20wearing%20a%20business%20casual%20outfit%2C%20warm%20friendly%20smile%2C%20clean%20background%2C%20high%20quality%20portrait&width=300&height=300&seq=team-1&orientation=squarish"
+alt="James Anderson"
+class="w-full h-full object-cover">
+</div>
+<h3 class="text-xl font-bold text-gray-900 group-hover:text-white">James Anderson</h3>
+<p class="text-gray-600 mb-4 group-hover:text-white/90">Founder & CEO</p>
+<div class="flex justify-center space-x-3">
+<a href="#" class="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-white/20">
+<i class="ri-linkedin-line group-hover:text-white"></i>
+</a>
+<a href="#" class="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-white/20">
+<i class="ri-twitter-line group-hover:text-white"></i>
+</a>
+</div>
+</div>
+<div class="bg-gray-50 p-6 !rounded-button text-center group hover:bg-primary transition-all duration-300 hover-scale" data-aos="fade-up" data-aos-delay="200">
+<div class="w-32 h-32 mx-auto mb-4 overflow-hidden !rounded-button">
+<img src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20a%20female%20tech%20leader%20in%20her%2030s%2C%20wearing%20modern%20business%20attire%2C%20confident%20pose%2C%20clean%20background%2C%20high%20quality%20portrait&width=300&height=300&seq=team-2&orientation=squarish"
+alt="Sarah Chen"
+class="w-full h-full object-cover">
+</div>
+<h3 class="text-xl font-bold text-gray-900 group-hover:text-white">Sarah Chen</h3>
+<p class="text-gray-600 mb-4 group-hover:text-white/90">CTO</p>
+<div class="flex justify-center space-x-3">
+<a href="#" class="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-white/20">
+<i class="ri-linkedin-line group-hover:text-white"></i>
+</a>
+<a href="#" class="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-white/20">
+<i class="ri-github-line group-hover:text-white"></i>
+</a>
+</div>
+</div>
+<div class="bg-gray-50 p-6 !rounded-button text-center group hover:bg-primary transition-all duration-300 hover-scale" data-aos="fade-up" data-aos-delay="200">
+<div class="w-32 h-32 mx-auto mb-4 overflow-hidden !rounded-button">
+<img src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20a%20male%20blockchain%20developer%20in%20his%20late%2020s%2C%20casual%20tech%20company%20style%2C%20friendly%20expression%2C%20clean%20background%2C%20high%20quality%20portrait&width=300&height=300&seq=team-3&orientation=squarish"
+alt="Michael Roberts"
+class="w-full h-full object-cover">
+</div>
+<h3 class="text-xl font-bold text-gray-900 group-hover:text-white">Michael Roberts</h3>
+<p class="text-gray-600 mb-4 group-hover:text-white/90">Lead Developer</p>
+<div class="flex justify-center space-x-3">
+<a href="#" class="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-white/20">
+<i class="ri-github-line group-hover:text-white"></i>
+</a>
+<a href="#" class="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-white/20">
+<i class="ri-linkedin-line group-hover:text-white"></i>
+</a>
+</div>
+</div>
+<div class="bg-gray-50 p-6 !rounded-button text-center group hover:bg-primary transition-all duration-300 hover-scale" data-aos="fade-up" data-aos-delay="200">
+<div class="w-32 h-32 mx-auto mb-4 overflow-hidden !rounded-button">
+<img src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20a%20female%20product%20manager%20in%20her%20mid%2030s%2C%20smart%20casual%20attire%2C%20engaging%20smile%2C%20clean%20background%2C%20high%20quality%20portrait&width=300&height=300&seq=team-4&orientation=squarish"
+alt="Emily Zhang"
+class="w-full h-full object-cover">
+</div>
+<h3 class="text-xl font-bold text-gray-900 group-hover:text-white">Emily Zhang</h3>
+<p class="text-gray-600 mb-4 group-hover:text-white/90">Product Manager</p>
+<div class="flex justify-center space-x-3">
+<a href="#" class="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-white/20">
+<i class="ri-linkedin-line group-hover:text-white"></i>
+</a>
+<a href="#" class="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-white/20">
+<i class="ri-twitter-line group-hover:text-white"></i>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20 bg-white">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid lg:grid-cols-2 gap-16 items-center">
+<div>
+<h2 class="text-4xl font-bold text-gray-900 mb-6">
+Building the Future of Web3
+</h2>
+<p class="text-xl text-gray-600 mb-8">
+With deep expertise in blockchain technology and a passion for innovation, we help businesses navigate the Web3 revolution and unlock new opportunities in the decentralized economy.
+</p>
+<div class="space-y-4">
+<div class="flex items-center space-x-3">
+<div class="w-6 h-6 bg-primary rounded-full flex items-center justify-center">
+<i class="ri-check-line text-white text-sm"></i>
+</div>
+<span class="text-gray-700">End-to-end blockchain development</span>
+</div>
+<div class="flex items-center space-x-3">
+<div class="w-6 h-6 bg-primary rounded-full flex items-center justify-center">
+<i class="ri-check-line text-white text-sm"></i>
+</div>
+<span class="text-gray-700">Smart contract auditing and security</span>
+</div>
+<div class="flex items-center space-x-3">
+<div class="w-6 h-6 bg-primary rounded-full flex items-center justify-center">
+<i class="ri-check-line text-white text-sm"></i>
+</div>
+<span class="text-gray-700">Web3 integration and consulting</span>
+</div>
+</div>
+</div>
+<div class="relative">
+<img src="https://readdy.ai/api/search-image?query=modern%20blockchain%20technology%20visualization%20with%20interconnected%20nodes%2C%20digital%20network%20patterns%2C%20futuristic%20tech%20aesthetic%2C%20clean%20professional%20design%2C%20blue%20and%20purple%20gradients%2C%20abstract%20geometric%20shapes%2C%20high-tech%20atmosphere&width=600&height=400&seq=about-img-001&orientation=landscape"
+alt="Blockchain Technology"
+class="w-full h-96 object-cover object-top !rounded-button shadow-lg">
+<div class="absolute -bottom-6 -left-6 w-24 h-24 bg-secondary !rounded-button flex items-center justify-center">
+<i class="ri-rocket-line text-white text-3xl"></i>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20 bg-primary text-white">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+<h2 class="text-4xl font-bold mb-6">Ready to Start Your Web3 Journey?</h2>
+<p class="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
+Let's discuss how we can help you leverage blockchain technology to transform your business and create new value in the Web3 ecosystem.
+</p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+<button class="bg-white text-primary px-8 py-3 !rounded-button font-semibold hover:bg-gray-100 transition-colors duration-200 whitespace-nowrap">
+Get Started Today
+</button>
+<button class="border-2 border-white text-white px-8 py-3 !rounded-button font-semibold hover:bg-white hover:text-primary transition-colors duration-200 whitespace-nowrap">
+View Our Work
+</button>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-gray-900 text-white py-12">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid md:grid-cols-4 gap-8">
+<div>
+<div class="flex items-center space-x-3 mb-4">
+<div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+<span class="text-white font-bold text-lg">K</span>
+</div>
+<span class="text-2xl font-bold">Karthick</span>
+</div>
+<p class="text-gray-400">
+Leading Web3 solutions provider specializing in blockchain development and decentralized technologies.
+</p>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-4">Services</h3>
+<ul class="space-y-2 text-gray-400">
+<li><a href="#" class="hover:text-white transition-colors duration-200">Blockchain Development</a></li>
+<li><a href="#" class="hover:text-white transition-colors duration-200">Smart Contracts</a></li>
+<li><a href="#" class="hover:text-white transition-colors duration-200">DeFi Solutions</a></li>
+<li><a href="#" class="hover:text-white transition-colors duration-200">NFT Platforms</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-4">Company</h3>
+<ul class="space-y-2 text-gray-400">
+<li><a href="#" class="hover:text-white transition-colors duration-200">About Us</a></li>
+<li><a href="#" class="hover:text-white transition-colors duration-200">Our Team</a></li>
+<li><a href="#" class="hover:text-white transition-colors duration-200">Careers</a></li>
+<li><a href="#" class="hover:text-white transition-colors duration-200">Contact</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-4">Connect</h3>
+<div class="flex space-x-4">
+<a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-primary transition-colors duration-200">
+<i class="ri-twitter-line text-lg"></i>
+</a>
+<a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-primary transition-colors duration-200">
+<i class="ri-linkedin-line text-lg"></i>
+</a>
+<a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-primary transition-colors duration-200">
+<i class="ri-github-line text-lg"></i>
+</a>
+</div>
+</div>
+</div>
+<div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+<p>&copy; 2025 Karthick. All rights reserved. Building the future of Web3.</p>
+</div>
+</div>
+</footer>
+<div class="magic-cursor"></div>
+<div class="magic-cursor-dot"></div>
+<script id="animation-init">
+document.addEventListener('DOMContentLoaded', function() {
+AOS.init({
+duration: 1000,
+once: true,
+offset: 100
+});
+const cursor = document.querySelector('.magic-cursor');
+const cursorDot = document.querySelector('.magic-cursor-dot');
+let mouseX = 0;
+let mouseY = 0;
+let cursorX = 0;
+let cursorY = 0;
+let dotX = 0;
+let dotY = 0;
+document.addEventListener('mousemove', (e) => {
+mouseX = e.clientX;
+mouseY = e.clientY;
+});
+function animate() {
+let distX = mouseX - cursorX;
+let distY = mouseY - cursorY;
+cursorX += distX * 0.1;
+cursorY += distY * 0.1;
+cursor.style.left = cursorX - 20 + 'px';
+cursor.style.top = cursorY - 20 + 'px';
+let dotDistX = mouseX - dotX;
+let dotDistY = mouseY - dotY;
+dotX += dotDistX * 0.2;
+dotY += dotDistY * 0.2;
+cursorDot.style.left = dotX - 4 + 'px';
+cursorDot.style.top = dotY - 4 + 'px';
+requestAnimationFrame(animate);
+}
+animate();
+document.querySelectorAll('a, button, .hover-scale').forEach(el => {
+el.addEventListener('mouseenter', () => {
+cursor.classList.add('active');
+});
+el.addEventListener('mouseleave', () => {
+cursor.classList.remove('active');
+});
+});
+const observerOptions = {
+root: null,
+rootMargin: '0px',
+threshold: 0.1
+};
+const observer = new IntersectionObserver((entries) => {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+entry.target.classList.add('visible');
+}
+});
+}, observerOptions);
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+});
+</script>
+<script id="mobile-menu-toggle">
+document.addEventListener('DOMContentLoaded', function() {
+const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+const mobileMenu = document.getElementById('mobile-menu');
+mobileMenuBtn.addEventListener('click', function() {
+mobileMenu.classList.toggle('hidden');
+});
+});
+</script>
+</body>
+</html>
